@@ -13,19 +13,17 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/style.css" />
+
+    <script src="/js/index.js"></script>
   </head>
   <body>
     <div class="container contact">
       <div class="row">
         <div class="col-md-3">
           <div class="contact-info">
-            <img
-            class="img-fluid"
-              src="/images/loan.jpeg"
-              alt="image"
-            />
+            <img class="img-fluid" src="/images/loan.jpeg" alt="image" />
             <h2>JS Loan Calculator</h2>
-            <h4>Designed by {your_name}</h4>
+            <h4 id="title">Designed by {your_name}</h4>
           </div>
         </div>
         <div class="col-md-9">
@@ -36,7 +34,7 @@
               >
               <div class="col-sm-10">
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
                   id="amount"
                   placeholder="Enter Loan Amount"
@@ -59,7 +57,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-12" for="interest">Interest Rate (%):</label>
+              <label class="control-label col-sm-12" for="interest"
+                >Interest Rate (%):</label
+              >
               <div class="col-sm-10">
                 <input
                   type="number"
@@ -72,29 +72,37 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-12" for="repayment"
-                  >Loan Repayment Duration:</label
-                >
-                <div class="col-sm-10">
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="duration"
-                    placeholder="Enter Loan Repayment Duration In Months"
-                    name="repayment"
-                  />
-                </div>
+              <label class="control-label col-sm-12" for="repayment"
+                >Loan Repayment Duration:</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="repayment"
+                  placeholder="Enter Loan Repayment Duration In Months"
+                  name="repayment"
+                />
+                <small class="text-danger" id="repayment_error"></small>
               </div>
-           
+            </div>
+
+            <div class="form-group" id="loan_result">
+              <p>Interest to be paid: <strong id="interest_result"></strong></p>
+              <p>Total amount payable: <strong id="amount_result"></strong></p>
+              <p>Monthly Repayment: <strong id="monthly_result"></strong></p>
+            </div>
+
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button onclick="calculateLoan()" type="submit" class="btn btn-default">Submit</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
